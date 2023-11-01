@@ -97,13 +97,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://43.204.149.215:8081/repository/citibank-releases/</url>
+	      <url>http://51.20.104.10:9001/test/#admin/repository/repositories:sbi-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://43.204.149.215:8081/repository/citibank-snapshot/</url>
+	      <url>http://51.20.104.10:9001/test/#admin/repository/repositories:sbi-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
