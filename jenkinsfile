@@ -1,0 +1,24 @@
+node {
+    
+def mavenHome = tool name:"maven3.9.5"
+ 
+    
+    stage('CheckoutCode'){
+    git branch: 'development', credentialsId: 'e563acda-ccf5-437f-98a8-7972359016e4', 
+    url: 'https://github.com/som-banking-project/maven-web-application'
+}
+    stage ('Build'){
+     sh "${mavenHome}/bin/mvn clean package"
+ }
+ stage('ExecuteSonarQubeReport'){
+     sh "${mavenHome}/bin/mvn clean sonar:sonar"
+}
+ stage('uploadIntoNexus'){
+sh "${mavenHome}/bin/mvn clean deploy"
+}
+
+sshagent(['f6b90792-28ee-42f1-9475-d4dd1ff1504a']) {
+ sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipeline-Scriptedway/target/maven-web-application.war ec2-user@172.31.18.157:/opt/apache-tomcat-9.0.82/webapps/"
+}
+ 
+ }
